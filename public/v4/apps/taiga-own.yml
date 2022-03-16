@@ -132,7 +132,7 @@ services:
         caproverExtra:
             notExposeAsWebApp: 'true'
 
-    $$cap_appname-proxy:
+    $$cap_appname:
         image: dockertaiga/proxy
         restart: always
         depends_on:
@@ -172,7 +172,7 @@ caproverOneClickApp:
           validRegex: "/^([^\\s^\\/])+$/"
         - id: '$$cap_taiga_host'
           label: TAIGA_HOST_URL
-          defaultValue: 'taiga.example.com'
+          defaultValue: $$cap_appname.$$cap_root_domain
           description: 'The URL where the taiga app is reachable with'
         - id: '$$cap_taiga_secret'
           label: SECRET
@@ -200,7 +200,7 @@ caproverOneClickApp:
           description: 'The password of the Rabbit MQ. Should be changed for better security.'
     instructions:
         start: 'With this Template you can deploy a Taiga.io instance preconfigured and with Postgres and RabbitMQ spinned up in Docker containers. It is recommended to use managed Postgres and RabbitMQ. See https://docs.taiga.io/setup-production.html#setup-prod-with-docker - https://www.taiga.io/'
-        end: Taiga has been successfully deployed! It might take a minute or two to boot though, during which time you might get a 502
+        end: Taiga has been successfully deployed! It might take a minute or two to boot though, during which time you might get a 502. Default credentials are username admin and password 123123.
     displayName: Taiga.io
     isOfficial: true
     description: Taiga is the project management tool for multi-functional agile teams. It has a rich feature set and at the same time it is very simple to start with through its intuitive user interface.
