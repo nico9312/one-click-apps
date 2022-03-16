@@ -25,8 +25,8 @@ services:
             RABBIT_PASSWORD: $$cap_taiga_rabbit_password
             RABBIT_VHOST: taiga
         volumes:
-            - $$cap_appname/media:/taiga-media
-            - $$cap_appname/conf/back:/taiga-conf
+            - $$cap_appname-media:/taiga-media
+            - $$cap_appname-conf-back:/taiga-conf
         caproverExtra:
             notExposeAsWebApp: 'true'
 
@@ -52,7 +52,7 @@ services:
             RABBIT_PASSWORD: $$cap_taiga_rabbit_password
             RABBIT_VHOST: taiga
         volumes:
-            - $$cap_appname/conf/front:/taiga-conf
+            - $$cap_appname-conf-front:/taiga-conf
         caproverExtra:
             notExposeAsWebApp: 'true'
 
@@ -104,7 +104,7 @@ services:
             RABBIT_PASSWORD: $$cap_taiga_rabbit_password
             RABBIT_VHOST: taiga
         volumes:
-            - $$cap_appname/data/db:/var/lib/postgresql/data
+            - $$cap_appname-data-db:/var/lib/postgresql/data
         caproverExtra:
             notExposeAsWebApp: 'true'
 
@@ -158,8 +158,8 @@ services:
             RABBIT_PASSWORD: $$cap_taiga_rabbit_password
             RABBIT_VHOST: taiga
         volumes:
-            - $$cap_appname/media:/taiga-media
-            - $$cap_appname/conf/proxy:/taiga-conf
+            - $$cap_appname-media:/taiga-media
+            - $$cap_appname-conf-proxy:/taiga-conf
         caproverExtra:
             containerHttpPort: '80'
 
